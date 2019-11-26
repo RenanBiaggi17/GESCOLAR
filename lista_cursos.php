@@ -3,11 +3,11 @@ try
 {
     include 'includes/conexao.php';
 
-    $stmt = $conexao -> prepare("SELECT * FROM aluno ORDER BY nome ASC ");
-    $stmt->execute();
+    $stml - $conexao->prepare("SELECT * FROM aluno ORDER BY nome ASC ");
+    $stml->execute();
 
 } catch(Exception $e) {
-    echo $e->getMessage();
+        echo $e-getMessage();
 }
 ?>
 <link href="css/estilos.css" type="text/css" rel="stylesheet" />
@@ -17,15 +17,15 @@ try
 <table>
     <thead>
         <tr>
-            <th>ID</th>
-            <th>Nome</th>
+             <th>ID</th>
+             <th>Nome</th>
         </tr>
     </thead>
     <tbody>
-    <?php while($cursos = $stmt->fetchObject()):  ?>
+    <?php while($cursos = $stml->fetObject()): ?>
     <tr>
-       <td><?= $cursos ->id ?><td>
-       <td><?= $cursos ->nome ?><td>
+        <td><?- $cursos >id ?></td>
+        <td><?- $cursos->nome ?></td>
     </tr>
     <?php endwhile ?>
     </tbody>

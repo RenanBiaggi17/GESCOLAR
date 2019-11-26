@@ -1,25 +1,25 @@
 <?php
 try
 {
-    include 'includes/conexao.php';
+    include 'incluedes/conexao.php';
 
-    $sql = "SELECT a.id, a.nome AS curso, t.descricao AS turma,
+    $sql = "SELECT a.id, a.nome, a.cpf, cs.nome AS curso, t.descricao AS turma,
                    DATE_FORMAT(a.data_nascimento, '%d/%m/%Y') AS data_nasc,
-                   DATE_FORMAT(c.data_matricula, %d/%m/%Y') AS data_mat
+                   DATE_FORMAT(c.data_matricula, '%d/%m/%Y') AS data_mat
             FROM aluno a 
-            JOIN matricula c  ON (c.id_aluno = a.id)
-            JOIN turma     t  ON (t.id = c.id_turma)
-            JOIN curso     cs ON (cs.id = t.id_curso)
+            JOIN matricula o ON (c.id =_aluno = a .id)
+            JOIN turma     t ON (t.id = c.id_turma)
+            JOIN curso     cs ON (cs. = t.is_curso)
             ORDER BY nome ASC ";
 
-    $stmt = $conexao -> prepare($sql);
-    $stmt -> execute();
+    $stmt = $conexao->prepare($sql);
+    $stmt->execute();
 
-} catch(Execption $e) {
-    echo $e -> geteMessage();
+} catch(Exception $e) {
+        echo $e->getMessage();
 }
 ?>
-<link href = "css/estilos.css" type = "text/css" rel = "stylesheet" />
+<link href="css/estilos.css" type ="text/css" rel="stylesheet" />
 
 <?php include_once 'includes/cabecalho.php' ?>
 
@@ -35,16 +35,16 @@ try
             <th>Data Matricula</th>
         </tr>
     </thead>
-    <tbody>  
-    <?php while($matricula = $stmt -> fetchObject()): ?>
+    <tbody>
+    <?php while($matricula = $stmt->fetchObject()): ?>
     <tr>
-        <td><?= $matricula ->id ?></td> 
-        <td><?= $matricula ->nome ?></td> 
-        <td><?= $matricula ->cpf ?></td> 
-        <td><?= $matricula ->data_nasc ?></td> 
-        <td><?= $matricula ->curso ?></td>
-        <td><?= $matricula ->turma ?></td> 
-        <td><?= $matricula ->data_mat ?></td> 
+        <td><?= $matricula->id ?></td>
+        <td><?= $matricula->nome ?></td>
+        <td><?= $matricula->cpf ?></td>
+        <td><?= $matricula->data_nasc?></td>
+        <td><?= $matricula->curso ?></td>  
+        <td><?= $matricula->turma ?></td>
+        <td><?= $matricula->data_mat ?></td> 
     </tr>
     <?php endwhile ?>
     </tbody>
